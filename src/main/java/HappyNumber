@@ -1,0 +1,25 @@
+class Solution {
+    public boolean isHappy(int n) {
+        if(n==0)
+            return false;
+        int slow=n;
+        int fast=n;
+        do {
+            slow = getDigitsSum(slow);
+            fast = getDigitsSum(getDigitsSum(fast));
+        } while(slow!=fast);
+        return slow==1;
+    }
+    
+    private int getDigitsSum(int n) {
+        ArrayList<Integer> digits = new ArrayList<>();
+        while(n!=0) {
+            digits.add(n%10);
+            n=n/10;
+        }
+        int sum=0;
+        for(int digit:digits)
+            sum+= digit*digit;
+        return sum;
+    }
+}
