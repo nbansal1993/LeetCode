@@ -1,0 +1,15 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int needleLen = needle.length();
+        int hayLen = haystack.length();
+        int index = -1;
+        for(int i=needleLen-1;i<hayLen;i++){
+            if(haystack.substring(i-needleLen+1,i+1).equalsIgnoreCase(needle)){
+                index = i-needleLen+1;
+                break;
+            }
+        }
+        
+        return index;
+    }
+}
