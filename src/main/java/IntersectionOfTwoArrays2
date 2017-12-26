@@ -1,0 +1,26 @@
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        if(nums1.length==0||nums2.length==0)
+            return new int[0];
+        HashMap<Integer,Integer> set = new HashMap<Integer,Integer>();
+        for(int i=0;i<nums1.length;i++){
+            if(set.containsKey(nums1[i]))
+                set.put(nums1[i], set.get(nums1[i])+1);
+            else
+                set.put(nums1[i], 1);
+        }
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for(int num:nums2){
+            if(set.containsKey(num) && set.get(num)!=0){
+                list.add(num);
+                set.put(num, set.get(num)-1);
+            }
+        }
+        int[] ans = new int[list.size()];
+        
+        for(int i=0;i<list.size();i++){
+            ans[i]=list.get(i);
+        }
+        return ans;
+    }
+}
