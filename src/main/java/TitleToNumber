@@ -1,0 +1,11 @@
+class Solution {
+    public int titleToNumber(String s) {
+        char[] str = s.toCharArray();
+        int value=0;
+        for(char chr: str){
+            value*=26;
+            value+= chr-64;
+        }
+        return value;
+    }
+}
