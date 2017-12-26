@@ -1,0 +1,33 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int len = s.length();
+        if(len <2)
+            return len;
+        
+        char[] str = s.toCharArray();
+        int[] visited = new int[256];
+        int prev_index=0, cur_len=0, max_len=0;
+        
+        Arrays.fill(visited,-1);
+        
+        for(int i=0;i<len;i++){
+            prev_index = visited[str[i]];
+            
+            if(prev_index == -1 || i - cur_len > prev_index)
+                cur_len++;
+            else
+            {
+                if(cur_len > max_len)
+                    max_len = cur_len;
+                 
+                cur_len = i - prev_index;
+            }
+             
+             // update the index of current character
+            visited[str[i]] = i;
+        }
+        if(cur_len > max_len)
+            max_len = cur_len;
+        return max_len;
+    }
+}
