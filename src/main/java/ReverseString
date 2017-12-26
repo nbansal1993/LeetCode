@@ -1,0 +1,12 @@
+class Solution {
+    public String reverseString(String s) {
+        if(s.equals(""))
+            return "";
+        char[] str = s.toCharArray();
+        StringBuffer rev= new StringBuffer();
+        for(int i=str.length-1;i>=0;i--){
+            rev.append(str[i]);
+        }
+        return rev.toString();
+    }
+}
